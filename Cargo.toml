@@ -1,0 +1,12 @@
+[workspace]
+members = [
+    "rawcode",
+    "rawcode_derive"
+]
+
+
+[profile.release]
+overflow-checks = true
+
+[profile.bench]
+overflow-checks = true

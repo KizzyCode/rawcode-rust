@@ -1,0 +1,32 @@
+[package]
+name = "rawcode"
+version = "0.1.0"
+edition = "2021"
+authors = ["KizzyCode Software Labs./Keziah Biermann <development@kizzycode.de>"]
+keywords = []
+categories = []
+description = "Implements a simple as-is encoding format"
+license = "BSD-2-Clause OR MIT"
+repository = "https://github.com/KizzyCode/rawcode-rust"
+readme = "../README.md"
+
+
+[badges]
+appveyor = { repository = "KizzyCode/rawcode-rust" }
+
+
+[features]
+default = ["derive"]
+derive = ["rawcode_derive"]
+no_std = []
+
+
+[dependencies]
+rawcode_derive = { path = "../rawcode_derive", optional = true }
+
+
+[profile.release]
+overflow-checks = true
+
+[profile.bench]
+overflow-checks = true

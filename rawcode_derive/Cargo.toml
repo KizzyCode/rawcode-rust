@@ -1,0 +1,35 @@
+[package]
+name = "rawcode_derive"
+version = "0.1.0"
+edition = "2021"
+authors = ["KizzyCode Software Labs./Keziah Biermann <development@kizzycode.de>"]
+keywords = []
+categories = []
+description = "Implements a `derive` macro for `rawcode`"
+license = "BSD-2-Clause OR MIT"
+repository = "https://github.com/KizzyCode/rawcode-rust"
+readme = "../README.md"
+
+
+[badges]
+appveyor = { repository = "KizzyCode/rawcode_derive-rust" }
+
+
+[features]
+default = []
+
+
+[dependencies]
+quote = "^1.0"
+syn = "^1.0"
+
+
+[lib]
+proc-macro = true
+
+
+[profile.release]
+overflow-checks = true
+
+[profile.bench]
+overflow-checks = true
