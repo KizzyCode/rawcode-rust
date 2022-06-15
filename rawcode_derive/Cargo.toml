@@ -8,6 +8,7 @@ categories = []
 description = "Implements a `derive` macro for `rawcode`"
 license = "BSD-2-Clause OR MIT"
 repository = "https://github.com/KizzyCode/rawcode-rust"
+readme = "README.md"
 
 
 [badges]
