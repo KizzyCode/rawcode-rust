@@ -6,7 +6,7 @@ extern crate quote;
 mod derive;
 
 use proc_macro::TokenStream;
-use syn::{Data, DeriveInput, Field, Fields, Ident};
+use syn::{Data, DeriveInput, Field, Fields, Generics, Ident};
 
 /// Implements `rawcode::coding::RawcodeConstSize` and
 /// `rawcode::coding::RawcodeEncode` + `rawcode::coding::RawcodeDecode`
@@ -22,7 +22,8 @@ pub fn rawcode_derive(input: TokenStream) -> TokenStream {
     };
 
     // Digest struct
-    let (fields, implementor): (_, fn(&Ident, &[Field]) -> TokenStream) = match ty_struct.fields {
+    type Implementor = fn(&Ident, &Generics, &[Field]) -> TokenStream;
+    let (fields, implementor): (_, Implementor) = match ty_struct.fields {
         Fields::Named(fields) => (fields.named, derive::named::impl_all),
         Fields::Unnamed(fields) => (fields.unnamed, derive::unnamed::impl_all),
         _ => panic!("Rawcode supports non-unit fields only"),
@@ -30,5 +31,5 @@ pub fn rawcode_derive(input: TokenStream) -> TokenStream {
 
     // Derive impl
     let fields: Vec<_> = fields.into_iter().collect();
-    implementor(&input.ident, &fields)
+    implementor(&input.ident, &input.generics, &fields)
 }
