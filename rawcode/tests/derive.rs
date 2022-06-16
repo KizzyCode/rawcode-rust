@@ -1,4 +1,4 @@
-#![cfg(feature = "derive")]
+#![cfg(feature = "rawcode_derive")]
 
 use rawcode::{error::Error, RawcodeConstSize, RawcodeDecode, RawcodeEncode, StrArray};
 use rawcode_derive::Rawcode;

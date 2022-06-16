@@ -30,8 +30,7 @@ However please note that you can also easily implement the basic traits `Rawcode
 
 ## Example
 ```rust ignore
-use rawcode::{RawcodeConstSize, RawcodeDecode, RawcodeEncode, StrArray};
-use rawcode_derive::Rawcode;
+use rawcode::{Rawcode, RawcodeConstSize, RawcodeDecode, RawcodeEncode, StrArray};
 
 /// A named test struct
 #[derive(Debug, PartialEq, Eq, Rawcode)]
