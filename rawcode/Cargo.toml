@@ -1,6 +1,6 @@
 [package]
 name = "rawcode"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["KizzyCode Software Labs./Keziah Biermann <development@kizzycode.de>"]
 keywords = []
@@ -22,7 +22,7 @@ no_std = []
 
 
 [dependencies]
-rawcode_derive = { version = "0.1", optional = true }
+rawcode_derive = { version = "0.2", optional = true }
 
 
 [profile.release]
