@@ -1,11 +1,12 @@
 //! Defines the basic encoding traits
 
+mod array;
 mod boolean;
 mod integer;
-mod list;
 mod strarray;
+mod unit;
 
-pub use crate::coding::strarray::StrArray;
+pub use crate::coding::{strarray::StrArray, unit::Unit};
 use crate::error::Error;
 
 /// A rawcode type with a const size
