@@ -18,7 +18,7 @@ struct Unnamed(bool, i128, [u64; 7], StrArray<9>);
 
 /// A generic test struct
 #[derive(Debug, PartialEq, Eq, Rawcode)]
-struct Generic<T>
+struct Generic<T, const CONST: usize>
 where
     T: RawcodeConstSize + RawcodeEncode + RawcodeDecode,
 {
@@ -65,8 +65,8 @@ fn unnamed() -> Result<(), Error> {
 #[test]
 fn generic() -> Result<(), Error> {
     // Create struct and buffer
-    let raw = Generic { u64_: 7, wrapped: StrArray::new(b"Testolope"), i8_: 4 };
-    let mut buf = [0; Generic::<StrArray<9>>::SIZE];
+    let raw: Generic<_, 4> = Generic { u64_: 7, wrapped: StrArray::new(b"Testolope"), i8_: 4 };
+    let mut buf = [0; Generic::<StrArray<9>, 7>::SIZE];
 
     // Perform decode-encode-cycle
     raw.encode(&mut buf)?;
