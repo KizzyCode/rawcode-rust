@@ -16,8 +16,8 @@ platform:
 configuration:
   - --features=
   - --features=derive
-  - --features=no_std
-  - --features=derive,no_std
+  - --features=std
+  - --features=derive,std
 
 
 # General environment vars
