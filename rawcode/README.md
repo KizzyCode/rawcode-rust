@@ -4,7 +4,7 @@
 [![docs.rs](https://docs.rs/rawcode/badge.svg)](https://docs.rs/rawcode)
 [![crates.io](https://img.shields.io/crates/v/rawcode.svg)](https://crates.io/crates/rawcode)
 [![Download numbers](https://img.shields.io/crates/d/rawcode.svg)](https://crates.io/crates/rawcode)
-[![dependency status](https://deps.rs/crate/rawcode/0.2.1/status.svg)](https://deps.rs/crate/rawcode/0.2.1)
+[![dependency status](https://deps.rs/crate/rawcode/0.3.0/status.svg)](https://deps.rs/crate/rawcode/0.3.0)
 
 
 # `rawcode`

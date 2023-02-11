@@ -79,7 +79,7 @@ impl<const LEN: usize> TryFrom<&str> for StrArray<LEN> {
         Ok(Self { utf8_bytes })
     }
 }
-#[cfg(not(feature = "no_std"))]
+#[cfg(feature = "std")]
 impl<const LEN: usize> TryFrom<String> for StrArray<LEN> {
     type Error = Error;
 
@@ -103,7 +103,7 @@ impl<const LEN: usize> TryFrom<&[u8]> for StrArray<LEN> {
         Self::try_from(bytes)
     }
 }
-#[cfg(not(feature = "no_std"))]
+#[cfg(feature = "std")]
 impl<const LEN: usize> TryFrom<Vec<u8>> for StrArray<LEN> {
     type Error = Error;
 
@@ -133,7 +133,7 @@ impl<const LEN: usize> AsRef<[u8; LEN]> for StrArray<LEN> {
         self.utf8_bytes.as_array()
     }
 }
-#[cfg(not(feature = "no_std"))]
+#[cfg(feature = "std")]
 impl<const LEN: usize> From<StrArray<LEN>> for String {
     fn from(array: StrArray<LEN>) -> Self {
         array.utf8_bytes.as_str().to_string()
@@ -144,7 +144,7 @@ impl<const LEN: usize> From<StrArray<LEN>> for [u8; LEN] {
         array.utf8_bytes.into_array()
     }
 }
-#[cfg(not(feature = "no_std"))]
+#[cfg(feature = "std")]
 impl<const LEN: usize> From<StrArray<LEN>> for Vec<u8> {
     fn from(array: StrArray<LEN>) -> Self {
         array.utf8_bytes.as_array().to_vec()

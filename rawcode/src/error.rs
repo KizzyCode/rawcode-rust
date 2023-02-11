@@ -43,7 +43,7 @@ impl Display for Error {
         write!(f, "{} at {}:{}", self.message, self.file, self.line)
     }
 }
-#[cfg(not(feature = "no_std"))]
+#[cfg(feature = "std")]
 impl std::error::Error for Error {
     /* No members to implement */
 }

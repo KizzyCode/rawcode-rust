@@ -59,7 +59,7 @@ where
     Ok(())
 }
 /// Encodes `value`
-#[cfg(not(feature = "no_std"))]
+#[cfg(feature = "std")]
 pub fn to_vec<T>(value: &T) -> Result<Vec<u8>, Error>
 where
     T: RawcodeEncode,
