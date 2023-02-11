@@ -1,7 +1,7 @@
 [workspace]
 members = [
     "rawcode",
-    "rawcode_derive"
+    "derive"
 ]
 
 
