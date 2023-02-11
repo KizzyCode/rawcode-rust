@@ -25,7 +25,7 @@ pub mod named {
 
         let implementation = quote! {
             impl #impl_generics ::rawcode::coding::RawcodeDecode for #ty #ty_generics #where_clause {
-                fn decode(buf: &[u8]) -> ::std::result::Result<Self, ::rawcode::error::Error> {
+                fn decode(buf: &[u8]) -> ::core::result::Result<Self, ::rawcode::error::Error> {
                     // Decode all fields
                     let mut pos = 0;
                     let this = Self { #( #fields_name: ::rawcode::coding::from_slice_at(buf, &mut pos)?, )* };
@@ -43,7 +43,7 @@ pub mod named {
 
         let implementation = quote! {
             impl #impl_generics ::rawcode::coding::RawcodeEncode for #ty #ty_generics #where_clause {
-                fn encode(&self, buf: &mut [u8]) -> ::std::result::Result<(), ::rawcode::error::Error> {
+                fn encode(&self, buf: &mut [u8]) -> ::core::result::Result<(), ::rawcode::error::Error> {
                     let mut pos = 0;
                     #( ::rawcode::coding::to_slice_at(&self.#fields_name, buf, &mut pos)?; )*
                     Ok(())
@@ -73,7 +73,7 @@ pub mod unnamed {
 
         let implementation = quote! {
             impl #impl_generics ::rawcode::coding::RawcodeDecode for #ty #ty_generics #where_clause {
-                fn decode(buf: &[u8]) -> ::std::result::Result<Self, ::rawcode::error::Error> {
+                fn decode(buf: &[u8]) -> ::core::result::Result<Self, ::rawcode::error::Error> {
                     // Decode all fields
                     let mut pos = 0;
                     let this = Self( #( ::rawcode::coding::from_slice_at::<#fields_ty>(buf, &mut pos)?, )* );
@@ -91,7 +91,7 @@ pub mod unnamed {
 
         let implementation = quote! {
             impl #impl_generics ::rawcode::coding::RawcodeEncode for #ty #ty_generics #where_clause {
-                fn encode(&self, buf: &mut [u8]) -> ::std::result::Result<(), ::rawcode::error::Error> {
+                fn encode(&self, buf: &mut [u8]) -> ::core::result::Result<(), ::rawcode::error::Error> {
                     let mut pos = 0;
                     #( ::rawcode::coding::to_slice_at(&self.#fields_index, buf, &mut pos)?; )*
                     Ok(())
