@@ -24,7 +24,7 @@ impl<const LEN: usize> Utf8Array<LEN> {
         Some(Self { utf8_bytes: bytes })
     }
     // Creates a new `Utf8Array` from a byte array
-    pub fn from_array(array: [u8; LEN]) -> Option<Self> {
+    pub const fn from_array(array: [u8; LEN]) -> Option<Self> {
         // Soundness is guaranteed because because `str::from_utf8` validates the UTF-8 encoding
         match str::from_utf8(&array) {
             Ok(_) => Some(Self { utf8_bytes: array }),
@@ -64,7 +64,7 @@ impl<const LEN: usize> StrArray<LEN> {
     ///
     /// # Panic
     /// Panics if the literal is invalid UTF-8
-    pub fn new(bytes: &[u8; LEN]) -> Self {
+    pub const fn new(bytes: &[u8; LEN]) -> Self {
         match Utf8Array::from_array(*bytes) {
             Some(utf8_bytes) => Self { utf8_bytes },
             None => panic!("Invalid string literal"),
